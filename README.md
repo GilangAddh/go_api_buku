@@ -5,4 +5,4 @@ Requiremens :
   - Go
   - Xampp or Posgre (For Database)
 
-Choose the auto migrate at file "main.go" in line 23-30
+Choose the connection database(using Postgre or Mysql) at file "main.go" in line 23-30
