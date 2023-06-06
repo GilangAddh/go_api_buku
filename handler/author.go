@@ -23,6 +23,7 @@ func NewAuthorHandler(authorService author.Service) *authorHandler {
 }
 
 func (h *authorHandler) GetAuthors(c *gin.Context) {
+	CorsPoliciy(c)
 	authors, err := h.authorService.FindAll()
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
@@ -44,6 +45,7 @@ func (h *authorHandler) GetAuthors(c *gin.Context) {
 }
 
 func (h *authorHandler) GetAuthor(c *gin.Context) {
+	CorsPoliciy(c)
 	id := c.Param("id")
 	idb, err := strconv.Atoi(id)
 
@@ -63,6 +65,7 @@ func (h *authorHandler) GetAuthor(c *gin.Context) {
 }
 
 func (h *authorHandler) DeleteAuthor(c *gin.Context) {
+	CorsPoliciy(c)
 	id := c.Param("id")
 	idb, err := strconv.Atoi(id)
 
@@ -84,6 +87,7 @@ func (h *authorHandler) DeleteAuthor(c *gin.Context) {
 }
 
 func (h *authorHandler) CreateAuthor(c *gin.Context) {
+	CorsPoliciy(c)
 	var authorRequest author.AuthorRequest
 
 	err := c.ShouldBindJSON(&authorRequest)
@@ -117,6 +121,7 @@ func (h *authorHandler) CreateAuthor(c *gin.Context) {
 }
 
 func (h *authorHandler) UpdateAuthor(c *gin.Context) {
+	CorsPoliciy(c)
 	var authorRequest author.AuthorRequest
 
 	err := c.ShouldBindJSON(&authorRequest)

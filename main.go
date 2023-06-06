@@ -64,5 +64,5 @@ func main() {
 	// v2.POST("/books", postBooksHandler)
 
 	//ganti port taro di parameter run
-	router.Run()
+	router.Run(":8081")
 }

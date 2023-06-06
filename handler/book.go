@@ -22,6 +22,7 @@ func NewBookHandler(bookService book.Service) *bookHandler {
 }
 
 func (h *bookHandler) GetBooks(c *gin.Context) {
+	CorsPoliciy(c)
 	books, err := h.bookService.FindAll()
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
@@ -38,11 +39,13 @@ func (h *bookHandler) GetBooks(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
+
 		"data": booksResponse,
 	})
 }
 
 func (h *bookHandler) GetBook(c *gin.Context) {
+	CorsPoliciy(c)
 	id := c.Param("id")
 	idb, err := strconv.Atoi(id)
 
@@ -62,6 +65,7 @@ func (h *bookHandler) GetBook(c *gin.Context) {
 }
 
 func (h *bookHandler) DeleteHandler(c *gin.Context) {
+	CorsPoliciy(c)
 	id := c.Param("id")
 	idb, _ := strconv.Atoi(id)
 
@@ -84,6 +88,7 @@ func (h *bookHandler) DeleteHandler(c *gin.Context) {
 }
 
 func (h *bookHandler) UpdateBook(c *gin.Context) {
+	CorsPoliciy(c)
 	var BookUpdate book.BookUpdate
 
 	err := c.ShouldBindJSON(&BookUpdate)
@@ -119,6 +124,7 @@ func (h *bookHandler) UpdateBook(c *gin.Context) {
 }
 
 func (h *bookHandler) CreateBook(c *gin.Context) {
+	CorsPoliciy(c)
 	var bookRequest book.BookRequest
 
 	err := c.ShouldBindJSON(&bookRequest)
