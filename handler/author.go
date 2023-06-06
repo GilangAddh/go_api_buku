@@ -39,9 +39,7 @@ func (h *authorHandler) GetAuthors(c *gin.Context) {
 		authorsResponse = append(authorsResponse, authorResponse)
 	}
 
-	c.JSON(http.StatusOK, gin.H{
-		"data": authorsResponse,
-	})
+	c.JSON(http.StatusOK, authorsResponse)
 }
 
 func (h *authorHandler) GetAuthor(c *gin.Context) {
@@ -59,9 +57,7 @@ func (h *authorHandler) GetAuthor(c *gin.Context) {
 
 	authorResponse := convertAToResponse(a)
 
-	c.JSON(http.StatusOK, gin.H{
-		"data": authorResponse,
-	})
+	c.JSON(http.StatusOK, authorResponse)
 }
 
 func (h *authorHandler) DeleteAuthor(c *gin.Context) {
@@ -114,9 +110,7 @@ func (h *authorHandler) CreateAuthor(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{
-		"data": convertAToResponse(author),
-	})
+	c.JSON(http.StatusOK, convertAToResponse(author))
 
 }
 
@@ -151,9 +145,7 @@ func (h *authorHandler) UpdateAuthor(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{
-		"data": convertAToResponse(a),
-	})
+	c.JSON(http.StatusOK, convertAToResponse(a))
 
 }
 

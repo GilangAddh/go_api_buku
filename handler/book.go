@@ -38,10 +38,14 @@ func (h *bookHandler) GetBooks(c *gin.Context) {
 		booksResponse = append(booksResponse, bookResponse)
 	}
 
-	c.JSON(http.StatusOK, gin.H{
+	// mengembalikan data dalam bentuk Object -> array of object
+	// c.JSON(http.StatusOK, gin.H{
 
-		"data": booksResponse,
-	})
+	// 	"data": booksResponse,
+	// })
+
+	// mengembalikan data dalam bentuk array of object
+	c.JSON(http.StatusOK, booksResponse)
 }
 
 func (h *bookHandler) GetBook(c *gin.Context) {
@@ -59,9 +63,7 @@ func (h *bookHandler) GetBook(c *gin.Context) {
 
 	bookResponse := convertToResponse(b)
 
-	c.JSON(http.StatusOK, gin.H{
-		"data": bookResponse,
-	})
+	c.JSON(http.StatusOK, bookResponse)
 }
 
 func (h *bookHandler) DeleteHandler(c *gin.Context) {
@@ -117,9 +119,7 @@ func (h *bookHandler) UpdateBook(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{
-		"data": convertToResponse(book),
-	})
+	c.JSON(http.StatusOK, convertToResponse(book))
 
 }
 
@@ -151,9 +151,7 @@ func (h *bookHandler) CreateBook(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{
-		"data": book,
-	})
+	c.JSON(http.StatusOK, book)
 
 }
 
