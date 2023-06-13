@@ -31,10 +31,10 @@ func (h *bookHandler) GetBooks(c *gin.Context) {
 		return
 	}
 
-	var booksResponse []book.BookResponse
+	var booksResponse []book.BookResponseView
 
 	for _, b := range books {
-		bookResponse := convertToResponse(b)
+		bookResponse := convertToResponseView(b)
 		booksResponse = append(booksResponse, bookResponse)
 	}
 
@@ -153,6 +153,18 @@ func (h *bookHandler) CreateBook(c *gin.Context) {
 
 	c.JSON(http.StatusOK, book)
 
+}
+
+func convertToResponseView(b entity.BookAuth) book.BookResponseView {
+	return book.BookResponseView{
+		ID:          b.ID,
+		Title:       b.Title,
+		Price:       b.Price,
+		Description: b.Description,
+		Rating:      b.Rating,
+		AuthorID:    b.AuthorID,
+		AuthorName:  b.AuthorName,
+	}
 }
 
 func convertToResponse(b entity.Book) book.BookResponse {

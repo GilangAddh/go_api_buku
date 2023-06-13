@@ -7,7 +7,8 @@ import (
 )
 
 type Repository interface {
-	FindAll() ([]entity.Book, error)
+	// db.Raw("Select * FROM book_auths")
+	FindAll() ([]entity.BookAuth, error)
 	FindById(ID int) (entity.Book, error)
 	Create(book entity.Book) (entity.Book, error)
 	Delete(book entity.Book) (entity.Book, error)
@@ -22,8 +23,8 @@ func NewRepository(db *gorm.DB) *repository {
 	return &repository{db}
 }
 
-func (r *repository) FindAll() ([]entity.Book, error) {
-	var books []entity.Book
+func (r *repository) FindAll() ([]entity.BookAuth, error) {
+	var books []entity.BookAuth
 
 	err := r.db.Find(&books).Error
 

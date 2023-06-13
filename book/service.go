@@ -6,7 +6,7 @@ import (
 )
 
 type Service interface {
-	FindAll() ([]entity.Book, error)
+	FindAll() ([]entity.BookAuth, error)
 	FindById(ID int) (entity.Book, error)
 	Create(book BookRequest) (entity.Book, error)
 	Delete(ID int) (entity.Book, error)
@@ -21,7 +21,7 @@ func NewService(repository Repository) *service {
 	return &service{repository}
 }
 
-func (s *service) FindAll() ([]entity.Book, error) {
+func (s *service) FindAll() ([]entity.BookAuth, error) {
 	books, err := s.repository.FindAll()
 	return books, err
 }

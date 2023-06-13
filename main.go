@@ -11,7 +11,8 @@ import (
 	//"github.com/go-playground/validator/v10"
 	"go_api_buku/author"
 	"go_api_buku/book"
-	"go_api_buku/entity"
+
+	// "go_api_buku/entity"
 	"go_api_buku/handler"
 
 	"gorm.io/driver/mysql"
@@ -32,8 +33,8 @@ func main() {
 		log.Fatal("Db connection Error")
 	}
 	// migrate
-	db.AutoMigrate(&entity.Author{})
-	db.AutoMigrate(&entity.Book{})
+	// db.AutoMigrate(&entity.Author{})
+	// db.AutoMigrate(&entity.Book{})
 	bookRepository := book.NewRepository(db)
 	bookService := book.NewService(bookRepository)
 	bookHandler := handler.NewBookHandler(bookService)
